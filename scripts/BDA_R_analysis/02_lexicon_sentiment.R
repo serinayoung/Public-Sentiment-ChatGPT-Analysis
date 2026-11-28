@@ -1,9 +1,8 @@
 # ============================================================
 # 02_lexicon_sentiment.R  -  Lexicon sentiment (tidytext, Bing)
 #   A. Sentimen semua post (Twitter vs HN, ikut minggu)
-#   B. Prediction untuk gold set  -> untuk Erin (RQ1)
+#   B. Prediction untuk gold set  -> RQ1
 #   C. Benchmark masa & memori 10K / 100K / 500K  -> RQ3
-# Mesti run 01_eda.R dulu.
 # ============================================================
 
 source("00_helpers.R")
@@ -56,8 +55,8 @@ print(count(gold_pred, predicted_label))
 
 # ---- C. Benchmark 10K / 100K / 500K ----
 # Guna cleaned_bdstar (data training Spark) supaya sampel sama dengan Spark.
-# ID sampel disimpan dalam CSV -> bagi kepada Nurnisriza supaya Spark guna row yang sama.
-# Masa yang diukur: tokenize + join lexicon + kira skor (teks sudah dibersihkan Esther).
+# ID sampel disimpan dalam CSV
+# Masa yang diukur: tokenize + join lexicon + kira skor.
 con <- dbConnect(SQLite(), DB_PATH)
 bd <- dbGetQuery(con, "SELECT ID, text_clean AS text FROM cleaned_bdstar") %>%
   filter(!is.na(text))
@@ -101,5 +100,4 @@ bench <- bench_runs %>%
 print(bench)
 write_csv(bench, "output/benchmark_R.csv")
 
-cat("\nSIAP. Hantar gold_predictions_lexicon_R.csv dan benchmark_R.csv kepada Erin,",
-    "dan fail bench_ids_*.csv kepada Nurnisriza.\n")
+cat("\nDONE.")
