@@ -100,4 +100,4 @@ bench <- bench_runs %>%
 print(bench)
 write_csv(bench, "output/benchmark_R.csv")
 
-cat("\nDONE.")
+cat("\nDONE.\n")
