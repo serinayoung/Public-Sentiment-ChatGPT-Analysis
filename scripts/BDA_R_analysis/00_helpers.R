@@ -1,6 +1,5 @@
 # ============================================================
 # 00_helpers.R  -  fungsi kongsi (dipanggil oleh skrip 01 & 02)
-# Jangan run fail ni sendiri; skrip lain akan source() dia.
 # ============================================================
 
 suppressPackageStartupMessages({
@@ -9,7 +8,7 @@ suppressPackageStartupMessages({
   library(ggplot2); library(lubridate); library(scales); library(tidytext)
 })
 
-DB_PATH     <- "bda_group_assignment_cleaned.db"   # versi cleaned dari Esther
+DB_PATH     <- "bda_group_assignment_cleaned.db"   # versi cleaned
 RAW_DB_PATH <- "bda_group_assignment.db"           # versi asal (untuk kira row asal saja)
 dir.create("output", showWarnings = FALSE)
 
@@ -29,7 +28,7 @@ clean_text <- function(x) {
     str_squish()
 }
 
-# Lexicon Bing (sudah ada dalam tidytext, tak perlu download).
+# Lexicon Bing
 # distinct() sebab ada beberapa perkataan tersenarai dua kali.
 bing <- get_sentiments("bing") %>% distinct(word, .keep_all = TRUE)
 
