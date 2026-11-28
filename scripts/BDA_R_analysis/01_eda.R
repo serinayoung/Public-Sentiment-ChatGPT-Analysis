@@ -113,4 +113,4 @@ p3 <- top_words %>%
   theme_minimal(base_size = 12)
 ggsave("output/eda3_top_words.png", p3, width = 9, height = 5, dpi = 150)
 
-cat("\nFINISHED. plot and CSV saved in output/ folder.\n")
+cat("\nDONE. plot and CSV saved in output/ folder.\n")
