@@ -1,6 +1,6 @@
 # ============================================================
 # 01_eda.R  -  3 plot EDA (Twitter vs Hacker News)
-# Guna data cleaned Esther (cleaned_tweets, cleaned_hn, column text_clean)
+# Guna data cleaned (cleaned_tweets, cleaned_hn, column text_clean)
 # Output masuk folder "output/"
 # ============================================================
 
@@ -15,7 +15,7 @@ dbDisconnect(con)
 
 n_tw_clean_db <- nrow(tw); n_hn_clean_db <- nrow(hn)
 
-# Bilangan row asal (sebelum Esther clean), kalau fail db asal masih ada
+# Bilangan row asal (data sebelum clean)
 n_tw_raw <- NA; n_hn_raw <- NA
 if (file.exists(RAW_DB_PATH)) {
   con <- dbConnect(SQLite(), RAW_DB_PATH)
@@ -24,7 +24,7 @@ if (file.exists(RAW_DB_PATH)) {
   dbDisconnect(con)
 }
 
-# ---- 2. Sediakan (Esther dah buat cleaning utama) ----
+
 tw <- tw %>%
   transmute(id = paste0("tw_", id), platform = "Twitter",
             day = as.Date(substr(date, 1, 10)), text = text_clean)
@@ -113,4 +113,4 @@ p3 <- top_words %>%
   theme_minimal(base_size = 12)
 ggsave("output/eda3_top_words.png", p3, width = 9, height = 5, dpi = 150)
 
-cat("\nSIAP. Tengok folder output/ untuk 3 plot dan fail CSV.\n")
+cat("\nFINISHED. plot and CSV saved in output/ folder.\n")
