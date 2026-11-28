@@ -1,7 +1,5 @@
 # ============================================================
 # 03_benchmark_only.R  -  Benchmark R (lexicon) sahaja, untuk RQ3
-# Run di laptop yang SAMA dengan benchmark Spark.
-# Perlu dalam folder yang sama: 00_helpers.R, bda_group_assignment_cleaned.db
 # Output: output/benchmark_R.csv, output/benchmark_R_all_runs.csv,
 #         output/bench_ids_*.csv, output/machine_info.txt
 # ============================================================
@@ -56,4 +54,4 @@ writeLines(c(paste("R version:", R.version.string),
              paste("Date:", format(Sys.time()))),
            "output/machine_info.txt")
 
-cat("\nSIAP. Hantar output/benchmark_R.csv dan output/machine_info.txt kepada Erin.\n")
+cat("\nDONE.\n")
